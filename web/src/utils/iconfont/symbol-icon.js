@@ -1,0 +1,23 @@
+// 多色图标
+export default [
+  "icon-mayi",
+  "icon-mifeng",
+  "icon-hujiachong",
+  "icon-pulee",
+  "icon-maomaochong",
+  "icon-wenzi",
+  "icon-qingting",
+  "icon-qiuyin",
+  "icon-pangxiao",
+  "icon-tiaozao",
+  "icon-lvdouying",
+  "icon-mazhazi",
+  "icon-jiachong",
+  "icon-zhizhu",
+  "icon-hudie",
+  "icon-yamaidie",
+  "icon-huangfeng",
+  "icon-mafeng",
+  "icon-caihuadie",
+  "icon-caidie",
+];

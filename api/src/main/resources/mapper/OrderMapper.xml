@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jbj.jbjapi.mapper.OrderMapper">
+
+    <select id="getAllTransaction" resultType="java.lang.Double">
+        SELECT
+            sum( payment_amount )
+        FROM
+            `t_order`
+        <where>
+            `status` = 1
+             <if test='account.roleType != null and account.roleType != "1"'>
+                 <if test='account.roleType == "2"'>
+                    AND merchant_id = #{account.roleId}
+                 </if>
+                 <if test='account.roleType == "3"'>
+                    AND supplier_id = #{account.roleId}
+                 </if>
+             </if>
+        </where>
+    </select>
+    <select id="getTransactionData" resultType="java.util.Map">
+        SELECT
+            sum( payment_amount ) AS amount,
+            supplier_id AS supplierId,
+            ( SELECT `name` FROM t_supplier WHERE id = supplier_id ) AS supplierName
+        FROM
+            `t_order`
+        WHERE
+            `status` = 1 AND
+            DATE_FORMAT(order_time, '%Y-%m-%d') = CURDATE()
+        GROUP BY
+            supplier_id
+        ORDER BY
+            sum( payment_amount ) DESC
+            LIMIT 5
+    </select>
+    <select id="category7" resultType="java.util.Map">
+        SELECT
+            sum( a.quantity ) AS `value`,
+            ( SELECT `name` FROM t_category WHERE id = p.category_id ) AS `name`
+        FROM
+            `t_order` a
+                LEFT JOIN t_product p ON a.product_id = p.id
+        WHERE
+            a.`status` = 1
+            <if test='roleType != null and roleType != "1"'>
+                <if test='roleType == "2"'>
+                    AND a.merchant_id = #{roleId}
+                </if>
+                <if test='roleType == "3"'>
+                    AND a.supplier_id = #{roleId}
+                </if>
+            </if>
+        GROUP BY
+            p.category_id
+        ORDER BY
+            sum( a.quantity ) DESC
+            LIMIT 7
+    </select>
+    <select id="getBusTransactionData" resultType="java.util.Map">
+        SELECT
+            sum( payment_amount ) AS amount,
+            merchant_id AS merchantId,
+            ( SELECT `name` FROM t_business WHERE id = merchant_id ) AS busName
+        FROM
+            `t_order`
+        WHERE
+            `status` = 1 AND
+            DATE_FORMAT(order_time, '%Y-%m-%d') = CURDATE()
+        GROUP BY
+            merchant_id
+        ORDER BY
+            sum( payment_amount ) DESC
+            LIMIT 5
+    </select>
+</mapper>

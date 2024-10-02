@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <script src="static/default/js/jquery.min.js"></script>
+  <script src="static/default/js/swiper-bundle.min.js"></script>
+  <script src="static/default/js/common.js"></script>
+  <title>聚比价</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>聚比价</strong>
+  </noscript>
+  <div id="app"></div>
+</body>
+
+</html>
+<script>
+  (function () {
+    //定义一个变量让setItem函数的值指向它
+    let originalSetItem = localStorage.setItem;
+    //重写setItem函数
+    localStorage.setItem = function (key, newValue) {
+      //创建setItemEvent事件
+      let event = new Event("setItemEvent");
+      event.key = key;
+      event.newValue = newValue;
+      //提交setItemEvent事件
+      window.dispatchEvent(event);
+      //执行原setItem函数
+      originalSetItem.apply(this, arguments);
+    }
+  })();
+
+  (function () {
+    let originalremoveItem = localStorage.removeItem;
+    localStorage.removeItem = function (key) {
+      let event = new Event("removeItemEvent");
+      event.key = key;
+      window.dispatchEvent(event);
+      originalremoveItem.apply(this, arguments);
+    }
+  })();
+
+</script>
+<style>
+  body {
+    margin: 0;
+    background: rgb(248, 246, 246);
+    -webkit-tap-highlight-color: transparent;
+    /*把高亮颜色设置为透明，也可以使用rgba的形式*/
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%
+  }
+</style>

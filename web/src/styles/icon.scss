@@ -1,0 +1,45 @@
+@import url("//at.alicdn.com/t/font_3225935_1nga677bwy4.css");
+
+[class^="el-icon-"],
+[class*=" el-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "iconfont" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-icon-loading {
+  animation: rotating 2s linear infinite;
+}
+
+.el-icon--right {
+  margin-left: 5px;
+}
+.el-icon--left {
+  margin-right: 5px;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+// 处理组件select多选时图标样式的bug
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected:after {
+  font-family: "iconfont" !important;
+  content: "" !important;
+}
