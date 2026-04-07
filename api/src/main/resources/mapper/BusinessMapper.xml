@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jbj.jbjapi.mapper.BusinessMapper">
+
+    <select id="businessList" resultType="com.jbj.jbjapi.entity.BusinessEntity">
+        SELECT a.*,b.id AS accountId,b.account AS account FROM t_business a LEFT JOIN t_account b ON b.role_type = 2 AND b.role_id = a.id
+        <where>
+            a.is_del = 0 AND b.is_del = 0
+            <if test="vo.accountId != null and vo.accountId != ''">
+                AND b.id LIKE CONCAT('%',#{vo.accountId},'%')
+            </if>
+            ORDER BY a.create_time DESC
+        </where>
+    </select>
+</mapper>

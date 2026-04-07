@@ -1,0 +1,126 @@
+.layui-body iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.layui-fluid {
+    padding: 15px;
+}
+
+.login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 510px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../default/img/login-bg.png") no-repeat;
+    background-position: center -60px;
+}
+
+.login-title {
+    margin-left: 40px;
+    font-size: 18px;
+}
+
+.login-wrap {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgb(0 0 0 / 5%);
+}
+
+.public-logo-m {
+    display: none;
+}
+
+.login-card-title {
+    font-size: 24px;
+    height: 45px;
+    width: fit-content;
+    border-bottom: 2px solid var(--link);
+}
+
+.layui-form {
+    margin-top: 30px;
+}
+
+.login-wrap .codeimg {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-wrap .codeimg a {
+    width: 180px;
+    height: 38px;
+}
+
+.login-wrap .codeimg a img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-wrap .layui-input {
+    font-size: 14px;
+}
+
+.login-tips {
+    display: flex;
+    justify-content: center;
+}
+
+.login-go {
+    color: var(--link);
+    font-size: 14px;
+}
+
+.login-go:hover {
+    color: var(--link-hover);
+}
+
+.login-registration-agreement {
+    color: #666;
+    margin-top: 20px;
+}
+
+.login-registration-agreement em {
+    margin-left: 5px;
+    color: var(--link);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .public-header {
+        display: none;
+    }
+
+    .login-wrap,
+    .login-card {
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .public-logo-m {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .public-logo-m img {
+        height: 40px;
+    }
+
+    .login-card-title {
+        text-align: center;
+        width: 100%;
+        border-bottom: 2px solid transparent;
+    }
+}

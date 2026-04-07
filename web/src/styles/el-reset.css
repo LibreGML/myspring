@@ -1,0 +1,33 @@
+/* iconfont单色字体图标 */
+
+/* 多色图标基础css 对应由 build/index.html 引入的图标文件 */
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+/* */
+
+.el-input + .el-input {
+  margin-left: 10px;
+}
+.el-input + .el-button {
+  margin-left: 10px;
+}
+
+.el-tag + .el-tag {
+  margin-left: 10px;
+}
+
+.el-dialog__header {
+  border-bottom: 1px solid #f0f0f0;
+}
+.el-dialog__footer {
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 修改行内表单之间的默认间距 */
+.el-form--inline .el-form-item {
+  margin-right: 20px;
+}
